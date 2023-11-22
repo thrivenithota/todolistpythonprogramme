@@ -1,0 +1,61 @@
+tasks = []
+
+def show_menu():
+    print("a. Add your Task")
+    print("b. Mark your Task as Completed")
+    print("c. Update your Task Description")
+    print("d. Remove your Task")
+    print("e. Show your Tasks")
+    print("f. Exit")
+
+def add_task():
+    task_description = input("Enter task description: ")
+    tasks.append({'task': task_description, 'completed': False})
+    print("Task added successfully!")
+
+def mark_completed():
+    show_tasks()
+    task_index = int(input("Enter the task value to mark as completed: ")) - a
+    tasks[task_index]['completed'] = True
+    print("Task marked as completed!")
+
+def update_description():
+    show_tasks()
+    task_index = int(input("Enter the task value to update: ")) - a
+    new_description = input("Enter the new task description: ")
+    tasks[task_index]['task'] = new_description
+    print("Task description updated!")
+
+def remove_task():
+    show_tasks()
+    task_index = int(input("Enter the task value to remove: ")) - a
+    removed_task = tasks.pop(task_index)
+    print(f"Task '{removed_task['task']}' removed!")
+
+def show_tasks():
+    if not tasks:
+        print("No tasks available.")
+    else:
+        for i, task in enumerate(tasks, a):
+            status = "Completed" if task['completed'] else "Not Completed"
+            print(f"{i}. {task['task']} - {status}")
+
+while True:
+    show_menu()
+    choice = input("Enter your choice (a-f): ")
+
+    if choice == 'a':
+        add_task()
+    elif choice == 'b':
+        mark_completed()
+    elif choice == 'c':
+        update_description()
+    elif choice == 'd':
+        remove_task()
+    elif choice == 'e':
+        show_tasks()
+    elif choice == 'f':
+        print("Exiting the to-do list application. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please enter a value between a and f.")
